@@ -11,15 +11,20 @@ def read():
         response = requests.get(url)
         doc = Document(response.text)
         summary = doc.summary()
-
+        title = doc.title()
         data = {
+            'title':title,
             'content': summary
+            
         }
-        resp = jsonify(data)
-        resp.status_code = 200
-        return resp
+        return sendresponse(data)
     else:
         return 'url parameter missing'
+
+def sendresponse(data):
+    resp = jsonify(data)
+    resp.status_code = 200
+    return resp
 
 if __name__ == '__main__':
     app.run()
