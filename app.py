@@ -15,9 +15,9 @@ def read():
         data = {
             'title':title,
             'content': summary
-            
         }
-        return sendresponse(data)
+        
+        return sendresponse(summary)
     else:
         return 'url parameter missing'
 
